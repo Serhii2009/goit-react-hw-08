@@ -1,7 +1,7 @@
-import { fetchCards, addCard, deleteCard } from "./operation";
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchCards, addCard, deleteCard } from "./operation";
 
-const initialUsers = {
+const initialState = {
   items: [],
   loading: false,
   error: null,
@@ -15,10 +15,9 @@ const handleRejected = (state, action) => {
   state.loading = false;
   state.error = action.payload;
 };
-
-const contactsSlice = createSlice({
+export const contactsSlice = createSlice({
   name: "contacts",
-  initialState: initialUsers,
+  initialState: initialState,
   extraReducers: (builder) =>
     builder
       .addCase(fetchCards.pending, handlePending)

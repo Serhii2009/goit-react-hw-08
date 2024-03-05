@@ -1,39 +1,57 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { Layout } from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from '../redux/auth/operations';
+import { useAuth } from '../hooks';
 
-import { fetchCards } from "../reduxe/operation";
-import { selectError } from "../reduxe/selector"; // selectLoading
-// import { MyLoader } from "../Loader/Loader";
-// import toast, { Toaster } from "react-hot-toast";
-
-import { SearchBox } from "./SearchBox/SearchBox";
-import { ContactList } from "./ContactList/ContactList";
-import { ContactForm } from "./ContactForm/ContactForm";
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const TasksPage = lazy(() => import('../pages/Tasks'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  // const isLoading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-
-  const [hasErrorOccurred, setHasErrorOccurred] = useState(false);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchCards());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (error && !hasErrorOccurred) {
-      error("Waiting please..."); // toast.
-      setHasErrorOccurred(true);
-    }
-  }, [error, hasErrorOccurred]);
-
-  return (
-    <div style={{ padding: 8 }}>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
-    </div>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/tasks"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+            }
+          />
+        </Route>
+      </Routes>
+      <Toaster />
+    </>
   );
 };
