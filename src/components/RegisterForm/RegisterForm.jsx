@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { register } from "../../redux/auth/operationAuth";
-import css from "./RegisterForm.module.css";
+import { register } from "../../redux/auth/operations";
+// import css from "./RegisterForm.module.css";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Username is required"),
@@ -29,12 +29,8 @@ export const RegisterForm = () => {
   });
 
   return (
-    <form
-      className={css.form}
-      onSubmit={formik.handleSubmit}
-      autoComplete="off"
-    >
-      <label className={css.label}>
+    <form onSubmit={formik.handleSubmit} autoComplete="off">
+      <label>
         Username
         <input
           type="text"
@@ -44,10 +40,10 @@ export const RegisterForm = () => {
           value={formik.values.name}
         />
         {formik.touched.name && formik.errors.name && (
-          <div className={css.error}>{formik.errors.name}</div>
+          <div>{formik.errors.name}</div>
         )}
       </label>
-      <label className={css.label}>
+      <label>
         Email
         <input
           type="email"
@@ -57,10 +53,10 @@ export const RegisterForm = () => {
           value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email && (
-          <div className={css.error}>{formik.errors.email}</div>
+          <div>{formik.errors.email}</div>
         )}
       </label>
-      <label className={css.label}>
+      <label>
         Password
         <input
           type="password"
@@ -70,7 +66,7 @@ export const RegisterForm = () => {
           value={formik.values.password}
         />
         {formik.touched.password && formik.errors.password && (
-          <div className={css.error}>{formik.errors.password}</div>
+          <div>{formik.errors.password}</div>
         )}
       </label>
       <button type="submit">Register</button>

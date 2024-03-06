@@ -1,5 +1,5 @@
 import { Contact } from "../Contact/Contact";
-import css from "./ContactList.module.css";
+// import css from "./ContactList.module.css";
 import { useSelector } from "react-redux";
 // import { toast } from "react-hot-toast";
 // import { deleteCard } from "../../redux/handleCards/operation";
@@ -15,7 +15,7 @@ export const ContactList = () => {
   // };
 
   return (
-    <ul className={css.contactWrapper}>
+    <ul>
       {selectCard.map((contact) => (
         <li key={contact.id}>
           <Contact

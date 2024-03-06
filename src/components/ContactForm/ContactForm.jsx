@@ -1,12 +1,12 @@
 import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import css from "./ContactForm.module.css";
+// import css from "./ContactForm.module.css";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-
-import { addCard } from "../../redux/handleCards/operation";
-import { toast } from "react-hot-toast";
+import { addCard } from "../../redux/cards/operation";
 import { selectCards } from "../../redux/auth/selectors";
+
+import { toast } from "react-hot-toast";
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -58,31 +58,19 @@ export const ContactForm = () => {
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}
     >
-      <Form className={css.contactForm}>
+      <Form>
         <div className="inputBox">
           <label htmlFor={nameFieldId}>Name</label>
-          <Field
-            className={css.formField}
-            id={nameFieldId}
-            type="text"
-            name="name"
-          />
-          <ErrorMessage className={css.error} name="name" component="span" />
+          <Field id={nameFieldId} type="text" name="name" />
+          <ErrorMessage name="name" component="span" />
         </div>
 
         <div className="inputBox">
           <label htmlFor={numberFieldId}>Number</label>
-          <Field
-            className={css.formField}
-            id={numberFieldId}
-            type="text"
-            name="number"
-          />
-          <ErrorMessage className={css.error} name="number" component="span" />
+          <Field id={numberFieldId} type="text" name="number" />
+          <ErrorMessage name="number" component="span" />
         </div>
-        <button type="submit" className={css.addBtn}>
-          Add contact
-        </button>
+        <button type="submit">Add contact</button>
       </Form>
     </Formik>
   );

@@ -1,21 +1,22 @@
 import { useEffect, lazy } from "react";
 import { useDispatch } from "react-redux";
-import "./App.css";
+// import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { refreshUser } from "../redux/auth/operations";
 import { useAuth } from "../hooks/useAuth";
-import { RestrictedRoute } from "../RestrictedRoute";
 
-import { PrivateRoute } from "../PrivateRoute";
-import { MyLoader } from "../Loader/Loader";
-import { Layout } from "../Layout/Layout";
+import { RestrictedRoute } from "./RestrictedRoute";
+import { PrivateRoute } from "./PrivateRoute";
 
-const Home = lazy(() => import("../../pages/Home/Home"));
-const Register = lazy(() => import("../../pages/Register/Register"));
-const Login = lazy(() => import("../../pages/Login/Login"));
-const ContactPage = lazy(() => import("../../pages/ContactPage/ContactPage"));
+import { MyLoader } from "./Loader/Loader"; //...
+import { Layout } from "./Layout/Layout";
 
-function App() {
+const Home = lazy(() => import("../pages/Home"));
+const Register = lazy(() => import("../pages/Register"));
+const Login = lazy(() => import("../pages/Login"));
+const ContactPage = lazy(() => import("../pages/ContactPage"));
+
+export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
@@ -55,6 +56,4 @@ function App() {
       {/* <Toaster /> */}
     </>
   );
-}
-
-export default App;
+};

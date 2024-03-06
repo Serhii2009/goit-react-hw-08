@@ -1,26 +1,20 @@
-import css from "./NavBar.module.css";
-import clsx from "clsx";
+// import css from "./NavBar.module.css";
+// import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 
 export const NavBar = () => {
-  const buildLinkClass = ({ isActive }) => {
-    return clsx(css.link, isActive && css.active);
-  };
+  // const buildLinkClass = ({ isActive }) => {
+  //   return clsx(css.link, isActive && css.active);
+  // };
   return (
     <>
-      <nav className={css.navigation}>
-        <NavLink to="/" className={buildLinkClass}>
-          Home
-        </NavLink>
+      <nav>
+        <NavLink to="/">Home</NavLink>
 
-        <div className={css.loginSection}>
+        <div>
           {" "}
-          <NavLink to="/register" className={buildLinkClass}>
-            Register
-          </NavLink>
-          <NavLink to="/login" className={buildLinkClass}>
-            Log In
-          </NavLink>
+          <NavLink to="/register">Register</NavLink>
+          <NavLink to="/login">Log In</NavLink>
         </div>
       </nav>
     </>

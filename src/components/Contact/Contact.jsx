@@ -1,6 +1,6 @@
-import css from "./Contact.module.css";
-import { FaPhone } from "react-icons/fa6";
-import { IoPerson } from "react-icons/io5";
+// import css from "./Contact.module.css";
+// import { FaPhone } from "react-icons/fa6";
+// import { IoPerson } from "react-icons/io5";
 import { ModalWindow } from "../Modal/Modal";
 import { useState } from "react";
 
@@ -15,19 +15,19 @@ export const Contact = ({ name, number, contactId }) => {
   };
 
   return (
-    <div className={css.contactCard}>
-      <div className={css.contactBox}>
-        <p className={css.title}>
-          <IoPerson />
+    <div>
+      <div>
+        <p>
+          {/* <IoPerson /> */}
           {name}
         </p>
-        <p className={css.title}>
-          <FaPhone />
+        <p>
+          {/* <FaPhone /> */}
           {number}
         </p>
       </div>
 
-      <button type="button" onClick={onButtonClick} className={css.deleteBtn}>
+      <button type="button" onClick={onButtonClick}>
         Delete
       </button>
       <ModalWindow

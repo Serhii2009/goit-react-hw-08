@@ -1,8 +1,8 @@
 import { useId } from "react";
-import css from "./SearchBox.module.css";
+// import css from "./SearchBox.module.css";
 import { useSelector, useDispatch } from "react-redux";
 
-import { checkFilter } from "../../redux/handleCards/filtersSlice";
+import { checkFilter } from "../../redux/cards/filtersSlice";
 import { selectStatusFilter } from "../../redux/auth/selectors";
 
 export const SearchBox = () => {
@@ -17,13 +17,7 @@ export const SearchBox = () => {
   return (
     <>
       <label htmlFor={id}>Finde contacts by name</label>
-      <input
-        id={id}
-        className={css.inputField}
-        value={filter}
-        type="text"
-        onChange={handleChange}
-      />
+      <input id={id} value={filter} type="text" onChange={handleChange} />
     </>
   );
 };

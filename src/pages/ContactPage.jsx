@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import toast, { Toaster } from "react-hot-toast";
 
-import { SearchBox } from "../../components/SearchBox/SearchBox";
-import { ContactList } from "../../components/ContactList/ContactList";
-import { ContactForm } from "../../components/ContactForm/ContactForm";
-import { MyLoader } from "../../components/Loader/Loader";
+import { SearchBox } from "../components/SearchBox/SearchBox";
+import { ContactList } from "../components/ContactList/ContactList";
+import { ContactForm } from "../components/ContactForm/ContactForm";
+import { MyLoader } from "../components/Loader/Loader";
 
 import { fetchCards } from "../redux/cards/operation";
 import { selectError, selectLoading } from "../redux/auth/selectors";
