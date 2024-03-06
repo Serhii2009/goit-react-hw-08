@@ -1,5 +1,4 @@
 import Modal from "react-modal";
-// import css from "./Modal.module.css";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { deleteCard } from "../../redux/cards/operation";
@@ -44,7 +43,7 @@ export const ModalWindow = ({ modalIsOpen, setIsOpen, contactId }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2>Are you sure you want to delete contact?</h2>
+        <h2>Are you sure?</h2>
         <div>
           <button onClick={handleDelete}>Yes</button>
           <button onClick={closeModal}>No</button>

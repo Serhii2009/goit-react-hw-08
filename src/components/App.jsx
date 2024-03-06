@@ -1,6 +1,6 @@
 import { useEffect, lazy } from "react";
 import { useDispatch } from "react-redux";
-// import "./App.css";
+
 import { Route, Routes } from "react-router-dom";
 import { refreshUser } from "../redux/auth/operations";
 import { useAuth } from "../hooks/useAuth";
@@ -8,7 +8,7 @@ import { useAuth } from "../hooks/useAuth";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
 
-import { MyLoader } from "./Loader/Loader"; //...
+import { MyLoader } from "./Loader/Loader";
 import { Layout } from "./Layout/Layout";
 
 const Home = lazy(() => import("../pages/Home"));
@@ -53,7 +53,6 @@ export const App = () => {
           />
         </Route>
       </Routes>
-      {/* <Toaster /> */}
     </>
   );
 };

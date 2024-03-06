@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import toast, { Toaster } from "react-hot-toast";
 
 import { SearchBox } from "../components/SearchBox/SearchBox";
 import { ContactList } from "../components/ContactList/ContactList";
@@ -38,7 +37,6 @@ export default function ContactsPage() {
 
       {isLoading && <MyLoader />}
       <ContactList />
-      {/* <Toaster /> */}
     </>
   );
 }

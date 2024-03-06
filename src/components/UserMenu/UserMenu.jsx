@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-// import css from "./UserMenu.module.css";
 import { logOut } from "../../redux/auth/operations";
 import { useAuth } from "../../hooks/useAuth";
 
