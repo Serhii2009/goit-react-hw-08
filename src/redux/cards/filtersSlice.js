@@ -1,41 +1,18 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://connections-api.herokuapp.com";
+const filterInitialState = {
+  name: "",
+};
 
-export const fetchCards = createAsyncThunk(
-  "cards/fetchAll",
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get("/contacts");
-      console.log(response);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+const filtersSlice = createSlice({
+  name: "filters",
+  initialState: filterInitialState,
+  reducers: {
+    checkFilter(state, action) {
+      state.name = action.payload;
+    },
+  },
+});
 
-export const addCard = createAsyncThunk(
-  "cards/addCard",
-  async (newCard, thunkAPI) => {
-    try {
-      const response = await axios.post("/contacts", newCard);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-export const deleteCard = createAsyncThunk(
-  "cards/deleteCard",
-  async (id, thunkAPI) => {
-    try {
-      const response = await axios.delete(`contacts/${id}`);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+export const { checkFilter } = filtersSlice.actions;
+export const filterReducer = filtersSlice.reducer;
